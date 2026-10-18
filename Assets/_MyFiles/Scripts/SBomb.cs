@@ -4,6 +4,7 @@ using TMPro;
 public class SBomb : MonoBehaviour
 {
     [SerializeField] private GameObject[] wires;
+    [SerializeField] private GameObject[] color;
     [SerializeField] private TextMeshProUGUI wireText;
     private bool[] correctWire;
     //public enum WireType { correctWire, wire1, wire2, wire3 };
@@ -20,7 +21,6 @@ public class SBomb : MonoBehaviour
         correctWire = new bool[wires.Length];
         int random = Random.Range(0, wires.Length);
         int second;
-
         do
         {
             second = Random.Range(0, wires.Length);
@@ -29,6 +29,16 @@ public class SBomb : MonoBehaviour
 
         correctWire[random] = true;
         correctWire[second] = true;
+
+        Renderer wireR = wires[random].GetComponent<Renderer>();
+        Renderer wiresR = wires[second].GetComponent<Renderer>();
+        Renderer sphereR = color[0].GetComponent<Renderer>();
+        Renderer spheresR = color[1].GetComponent<Renderer>();
+
+        sphereR.material.color = wireR.material.color;
+        spheresR.material.color = wiresR.material.color;
+
+
 
         for (int i = 0; i < wires.Length; i++)
         {
