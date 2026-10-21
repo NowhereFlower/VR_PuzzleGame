@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - wire
+  - block1
+  - block2
+  - block3
   layers:
   - Default
   - TransparentFX
