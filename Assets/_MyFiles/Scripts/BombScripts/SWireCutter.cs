@@ -11,6 +11,7 @@ public class SWireCutter : MonoBehaviour
             if (wire != null && bomb != null)
             {
                 bomb.CutWire(wire.wireIndex);
+                other.gameObject.SetActive(false);
             }
         }
     }
