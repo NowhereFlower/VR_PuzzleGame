@@ -8,6 +8,7 @@ TagManager:
   - block1
   - block2
   - block3
+  - Whiteboard
   layers:
   - Default
   - TransparentFX
