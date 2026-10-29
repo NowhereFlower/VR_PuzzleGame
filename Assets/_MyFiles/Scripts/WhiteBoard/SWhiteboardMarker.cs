@@ -8,7 +8,7 @@ public class SWhiteboardMarker : MonoBehaviour
     [SerializeField] private Transform tip;
     [SerializeField] private int penSize = 5;
 
-    private new Renderer renderer; 
+    private Renderer renderer; 
     private Color[] colors;
     private float tipHeight;
     private RaycastHit hit;
@@ -27,6 +27,11 @@ public class SWhiteboardMarker : MonoBehaviour
     private void Update()
     {
         Draw();
+        Debug.DrawRay(tip.position, tip.up, Color.red);
+        if (Physics.Raycast(tip.position, tip.up, out RaycastHit hit, 0.5f))
+        {
+            Debug.Log("Ray hit: " + hit.transform.name); 
+        }
     }
 
     private void Draw()
@@ -62,7 +67,6 @@ public class SWhiteboardMarker : MonoBehaviour
                     }
 
                     transform.rotation = lastTouchRot;
-
                     whiteboard.texture.Apply();
                 }
 

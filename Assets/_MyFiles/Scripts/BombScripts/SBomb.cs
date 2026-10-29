@@ -6,6 +6,8 @@ public class SBomb : MonoBehaviour
     [SerializeField] private GameObject[] wires;
     [SerializeField] private GameObject[] color;
     [SerializeField] private TextMeshProUGUI wireText;
+    [SerializeField] private GameObject losePanel;
+    [SerializeField] private ParticleSystem smokeParticle;
     private bool[] correctWire;
     //public enum WireType { correctWire, wire1, wire2, wire3 };
 
@@ -18,6 +20,7 @@ public class SBomb : MonoBehaviour
 
     private void WireSet()
     {
+        losePanel.SetActive(false);
         correctWire = new bool[wires.Length];
         int random = Random.Range(0, wires.Length);
         int second;
@@ -68,6 +71,8 @@ public class SBomb : MonoBehaviour
         else
         {
             wireText.text = "Wrong Wire!";
+            smokeParticle.Play();
+            losePanel.SetActive(true);
         }
     }
 }
