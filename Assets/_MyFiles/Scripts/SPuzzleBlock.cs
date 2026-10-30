@@ -2,10 +2,20 @@ using UnityEngine;
 
 public class SPuzzleBlock : MonoBehaviour
 {
-    [SerializeField] private GameObject[] shapePrefab;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform spawnPoint2;
-    [SerializeField] private Transform spawnPoint3;
+    [SerializeField] private GameObject[] shapesPrefab;
+    [SerializeField] private GameObject light1;
+    [SerializeField] private GameObject light2;
+    [SerializeField] private GameObject light3;
+    [SerializeField] private GameObject Wronglight1;
+    [SerializeField] private GameObject Wronglight2;
+    [SerializeField] private GameObject Wrongight3;
+    [SerializeField] private GameObject Correctlight1;
+    [SerializeField] private GameObject Correctlight2;
+    [SerializeField] private GameObject Correctlight3;
+    [SerializeField] private GameObject socket;
+    [SerializeField] private GameObject socket2;
+    [SerializeField] private GameObject socket3;
+    [SerializeField] private Transform[] spawnPoint4;
     [SerializeField] private int blockCounter1 = 0;
     [SerializeField] private int blockCounter2 = 0;
     [SerializeField] private int blockCounter3 = 0;
@@ -17,47 +27,61 @@ public class SPuzzleBlock : MonoBehaviour
         RandomShape();
     }
 
+
     private void RandomShape()
     {
-        int index = Random.Range(0, shapePrefab.Length);
-        int index2 = Random.Range(0, shapePrefab.Length);
-        int index3 = Random.Range(0, shapePrefab.Length);
-        Instantiate(shapePrefab[index], spawnPoint.position, spawnPoint.rotation);
-        Instantiate(shapePrefab[index2], spawnPoint2.position, spawnPoint2.rotation);
-        Instantiate(shapePrefab[index3], spawnPoint3.position, spawnPoint3.rotation);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("block1"))
+        for(int i = 0; i < shapesPrefab.Length; i++)
         {
-            blockCounter1++;
+            int ran = Random.Range(0, shapesPrefab.Length);
+            if(i == 0)
+            {
+                Instantiate(shapesPrefab[ran], spawnPoint4[i].position, spawnPoint4[i].rotation).tag = "block1";
+            }
+            else if (i == 1)
+            {
+                Instantiate(shapesPrefab[ran], spawnPoint4[i].position, spawnPoint4[i].rotation).tag = "block2";
+            }
+            else if (i == 2)
+            {
+                Instantiate(shapesPrefab[ran], spawnPoint4[i].position, spawnPoint4[i].rotation).tag = "block3";
+            }
+            else
+            {
+                Instantiate(shapesPrefab[ran], spawnPoint4[i].position, spawnPoint4[i].rotation);
+            }
         }
-        if (other.CompareTag("block2"))
-        {
-            blockCounter2++;
-        }
-        if (other.CompareTag("block3"))
-        {
-            blockCounter3++;
-        }
-        blockCounterTotal = blockCounter1 + blockCounter2 + blockCounter3;
-
     }
 
-    private void OnTriggerExit(Collider other)
+    public void UpdateSocket(int socketNumber, Collider other, bool isEntered)
     {
-        if (other.CompareTag("block1"))
+        int change = isEntered ? 1 : -1;
+
+        if(socketNumber == 1 && other.CompareTag("block1"))
         {
-            blockCounter1--;
+            blockCounter1 = Mathf.Max(0, blockCounter1 + change);
+            if(change == 1)
+            {
+                light1.SetActive(false);
+                Wronglight1.SetActive(false);
+                Correctlight1.SetActive(true);
+            }
+            else
+            {
+                light1.SetActive(false);
+                Wronglight1.SetActive(true);
+                Correctlight1.SetActive(false);
+            }
         }
-        if (other.CompareTag("block2"))
+        else if (socketNumber == 2 && other.CompareTag("block2"))
         {
-            blockCounter2--;
+            blockCounter2 = Mathf.Max(0, blockCounter2 + change);
         }
-        if (other.CompareTag("block3"))
+        else if (socketNumber == 3 && other.CompareTag("block3"))
         {
-            blockCounter3--;
+            blockCounter3 = Mathf.Max(0, blockCounter3 + change);
         }
+
         blockCounterTotal = blockCounter1 + blockCounter2 + blockCounter3;
+
     }
 }
