@@ -8,7 +8,7 @@ public class SSocketChange : MonoBehaviour
 
     private void Start()
     {
-        puzzle = GetComponent<SPuzzleBlock>();
+        puzzle = GetComponentInParent<SPuzzleBlock>();
     }
 
     private void OnTriggerEnter(Collider other)

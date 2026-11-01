@@ -8,7 +8,7 @@ public class SPuzzleBlock : MonoBehaviour
     [SerializeField] private GameObject light3;
     [SerializeField] private GameObject Wronglight1;
     [SerializeField] private GameObject Wronglight2;
-    [SerializeField] private GameObject Wrongight3;
+    [SerializeField] private GameObject WrongLight3;
     [SerializeField] private GameObject Correctlight1;
     [SerializeField] private GameObject Correctlight2;
     [SerializeField] private GameObject Correctlight3;
@@ -47,7 +47,7 @@ public class SPuzzleBlock : MonoBehaviour
             }
             else
             {
-                Instantiate(shapesPrefab[ran], spawnPoint4[i].position, spawnPoint4[i].rotation);
+                Instantiate(shapesPrefab[ran], spawnPoint4[i].position, spawnPoint4[i].rotation).tag = "block";
             }
         }
     }
@@ -59,26 +59,44 @@ public class SPuzzleBlock : MonoBehaviour
         if(socketNumber == 1 && other.CompareTag("block1"))
         {
             blockCounter1 = Mathf.Max(0, blockCounter1 + change);
-            if(change == 1)
-            {
-                light1.SetActive(false);
-                Wronglight1.SetActive(false);
-                Correctlight1.SetActive(true);
-            }
-            else
-            {
-                light1.SetActive(false);
-                Wronglight1.SetActive(true);
-                Correctlight1.SetActive(false);
-            }
+            Wronglight1.SetActive(false);
+            light1.SetActive(false);
+            Correctlight1.SetActive(true);
         }
         else if (socketNumber == 2 && other.CompareTag("block2"))
         {
             blockCounter2 = Mathf.Max(0, blockCounter2 + change);
+            Wronglight2.SetActive(false);
+            light2.SetActive(false);
+            Correctlight2.SetActive(true);
         }
         else if (socketNumber == 3 && other.CompareTag("block3"))
         {
             blockCounter3 = Mathf.Max(0, blockCounter3 + change);
+            WrongLight3.SetActive(false);
+            light3.SetActive(false);
+            Correctlight3.SetActive(true);
+        }
+        if (socketNumber == 1 && other.CompareTag("block"))
+        {
+            blockCounter1 = Mathf.Max(0, blockCounter1 + change);
+            Wronglight1.SetActive(true);
+            light1.SetActive(false);
+            Correctlight1.SetActive(false);
+        }
+        if (socketNumber == 2 && other.CompareTag("block"))
+        {
+            blockCounter1 = Mathf.Max(0, blockCounter1 + change);
+            Wronglight2.SetActive(true);
+            light2.SetActive(false);
+            Correctlight2.SetActive(false);
+        }
+        if (socketNumber == 3 && other.CompareTag("block"))
+        {
+            blockCounter1 = Mathf.Max(0, blockCounter1 + change);
+            WrongLight3.SetActive(true);
+            light3.SetActive(false);
+            Correctlight3.SetActive(false);
         }
 
         blockCounterTotal = blockCounter1 + blockCounter2 + blockCounter3;
