@@ -33,6 +33,7 @@ public class SBomb : MonoBehaviour
         correctWire[random] = true;
         correctWire[second] = true;
 
+        //Getting random color for wires
         Renderer wireR = wires[random].GetComponent<Renderer>();
         Renderer wiresR = wires[second].GetComponent<Renderer>();
         Renderer sphereR = color[0].GetComponent<Renderer>();
