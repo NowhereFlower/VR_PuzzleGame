@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class SInputTest : MonoBehaviour
 {
+    //Testing hand inputs to see if the controllers are working
     public InputActionProperty testActionValue;
     public InputActionProperty testActionButton;
 

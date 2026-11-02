@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class AnimateHandOnInput : MonoBehaviour
 {
+    //Doing animations for the hands for grip and pinching
     public InputActionProperty gripValue;
     public InputActionProperty triggerValue;
 

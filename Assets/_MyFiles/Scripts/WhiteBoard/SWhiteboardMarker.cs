@@ -27,6 +27,8 @@ public class SWhiteboardMarker : MonoBehaviour
     private void Update()
     {
         Draw();
+
+        //Testimg and seeing where it points at
         Debug.DrawRay(tip.position, tip.up, Color.red);
         if (Physics.Raycast(tip.position, tip.up, out RaycastHit hit, 0.5f))
         {
@@ -38,6 +40,7 @@ public class SWhiteboardMarker : MonoBehaviour
     {
         if(Physics.Raycast(tip.position, transform.up, out hit, tipHeight))
         {
+            //Checks if hit is the whiteboard
             if (hit.transform.CompareTag("Whiteboard"))
             {
                 if(whiteboard == null)

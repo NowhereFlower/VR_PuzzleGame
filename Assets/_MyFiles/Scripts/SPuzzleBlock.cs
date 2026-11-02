@@ -27,7 +27,7 @@ public class SPuzzleBlock : MonoBehaviour
         RandomShape();
     }
 
-
+    //Puts random Shapes around the table and 3 blocks has the tags for the sockets
     private void RandomShape()
     {
         for(int i = 0; i < shapesPrefab.Length; i++)
@@ -52,6 +52,7 @@ public class SPuzzleBlock : MonoBehaviour
         }
     }
 
+    //Checks if tags for the sockets are correct or not
     public void UpdateSocket(int socketNumber, Collider other, bool isEntered)
     {
         int change = isEntered ? 1 : -1;

@@ -6,10 +6,11 @@ public class SWhiteboard : MonoBehaviour
     public Vector2 textureSize = new Vector2(2048, 2048);
 
 
+    
     private void Start()
     {
         var r = GetComponent<Renderer>();
-        texture = new Texture2D((int)textureSize.x, (int)textureSize.y);
+        texture = new Texture2D((int)textureSize.x, (int)textureSize.y); //Geting default texture of the whiteboard
         r.material.mainTexture = texture;
     }
 }

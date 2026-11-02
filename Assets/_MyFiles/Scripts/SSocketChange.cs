@@ -8,7 +8,7 @@ public class SSocketChange : MonoBehaviour
 
     private void Start()
     {
-        puzzle = GetComponentInParent<SPuzzleBlock>();
+        puzzle = GetComponentInParent<SPuzzleBlock>(); //Is Parent since the SPuzzleBlock is on the parent of the sockets
     }
 
     private void OnTriggerEnter(Collider other)

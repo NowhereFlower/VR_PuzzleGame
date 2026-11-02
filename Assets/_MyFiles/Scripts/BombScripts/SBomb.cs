@@ -1,6 +1,8 @@
 using UnityEngine;
+using System.Collections;
 using Unity.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class SBomb : MonoBehaviour
 {
     [SerializeField] private GameObject[] wires;
@@ -9,9 +11,6 @@ public class SBomb : MonoBehaviour
     [SerializeField] private GameObject losePanel;
     [SerializeField] private ParticleSystem smokeParticle;
     private bool[] correctWire;
-    //public enum WireType { correctWire, wire1, wire2, wire3 };
-
-    //private WireType wireType;
 
     private void Awake()
     {
@@ -22,6 +21,7 @@ public class SBomb : MonoBehaviour
     {
         losePanel.SetActive(false);
         correctWire = new bool[wires.Length];
+        //Seting the wires color and if it's correct or not at random
         int random = Random.Range(0, wires.Length);
         int second;
         do
@@ -45,6 +45,7 @@ public class SBomb : MonoBehaviour
 
         for (int i = 0; i < wires.Length; i++)
         {
+            //Tells which wire is correct or wrong
             Debug.Log("Wire " + (i + 1) + ": " + (correctWire[i] ? "CORRECT" : "WRONG"));
         }
 
@@ -52,18 +53,18 @@ public class SBomb : MonoBehaviour
 
     public bool IsCorrectWire(int indexWire)
     {
-        if(correctWire == null || indexWire < 0 || indexWire >= correctWire.Length)
+        if (correctWire == null || indexWire < 0 || indexWire >= correctWire.Length)
         {
             return false;
         }
 
         return correctWire[indexWire];
-            
+
     }
 
     public void CutWire(int indexWire)
     {
-        
+
         if (correctWire[indexWire])
         {
             wireText.text = "Correct Wire!";
@@ -73,7 +74,18 @@ public class SBomb : MonoBehaviour
             wireText.text = "Wrong Wire!";
             smokeParticle.Play();
             losePanel.SetActive(true);
+            StartCoroutine(IDefeat());
         }
+    }
+
+    //Goes back and restarts level\
+    //May add a fade in effect
+    IEnumerator IDefeat()
+    {
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene(0);
+
     }
 }
 
