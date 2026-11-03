@@ -234,6 +234,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4265145046509031116, guid: 1129f178786b54a41b0c311601464452, type: 3}
       insertIndex: -1
       addedObject: {fileID: 21618238}
+    - targetCorrespondingSourceObject: {fileID: 4265145046509031116, guid: 1129f178786b54a41b0c311601464452, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 21618243}
   m_SourcePrefab: {fileID: 100100000, guid: 1129f178786b54a41b0c311601464452, type: 3}
 --- !u!1 &21618236 stripped
 GameObject:
@@ -422,6 +425,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07317212, y: 0.5178682, z: 0.19270824}
   m_Center: {x: -0.011356822, y: -0.108503945, z: -0.0408982}
+--- !u!114 &21618243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21618236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a1302d0d134fa8a2a5b3bf4aec3c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Transformers.XRGeneralGrabTransformer
+  m_PermittedDisplacementAxes: -1
+  m_ConstrainedAxisDisplacementMode: 1
+  m_TwoHandedRotationMode: 1
+  m_AllowOneHandedScaling: 1
+  m_AllowTwoHandedScaling: 1
+  m_OneHandedScaleSpeed: 0.5
+  m_ThresholdMoveRatioForScale: 0.05
+  m_ClampScaling: 1
+  m_MinimumScaleRatio: 0.25
+  m_MaximumScaleRatio: 2
+  m_ScaleMultiplier: 1
 --- !u!1 &35611023
 GameObject:
   m_ObjectHideFlags: 0
