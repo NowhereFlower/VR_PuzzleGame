@@ -20,6 +20,11 @@ public class SPuzzleBlock : MonoBehaviour
     [SerializeField] private int blockCounter2 = 0;
     [SerializeField] private int blockCounter3 = 0;
     [SerializeField] private int blockCounterTotal = 0;
+    public SGame game;
+    public int gameCount1 = 0;
+    public int gameCount2 = 0;
+    public int gameCount3 = 0;
+
 
 
     private void Awake()
@@ -63,6 +68,9 @@ public class SPuzzleBlock : MonoBehaviour
             Wronglight1.SetActive(false);
             light1.SetActive(false);
             Correctlight1.SetActive(true);
+            gameCount1 = 1;
+
+
         }
         else if (socketNumber == 2 && other.CompareTag("block2"))
         {
@@ -70,6 +78,9 @@ public class SPuzzleBlock : MonoBehaviour
             Wronglight2.SetActive(false);
             light2.SetActive(false);
             Correctlight2.SetActive(true);
+            gameCount2 = 1;
+
+
         }
         else if (socketNumber == 3 && other.CompareTag("block3"))
         {
@@ -77,6 +88,8 @@ public class SPuzzleBlock : MonoBehaviour
             WrongLight3.SetActive(false);
             light3.SetActive(false);
             Correctlight3.SetActive(true);
+            gameCount3 = 1;
+
         }
         if (socketNumber == 1 && other.CompareTag("block"))
         {
@@ -84,6 +97,7 @@ public class SPuzzleBlock : MonoBehaviour
             Wronglight1.SetActive(true);
             light1.SetActive(false);
             Correctlight1.SetActive(false);
+            gameCount1 = 0;
         }
         if (socketNumber == 2 && other.CompareTag("block"))
         {
@@ -91,6 +105,7 @@ public class SPuzzleBlock : MonoBehaviour
             Wronglight2.SetActive(true);
             light2.SetActive(false);
             Correctlight2.SetActive(false);
+            gameCount2 = 0;
         }
         if (socketNumber == 3 && other.CompareTag("block"))
         {
@@ -98,9 +113,12 @@ public class SPuzzleBlock : MonoBehaviour
             WrongLight3.SetActive(true);
             light3.SetActive(false);
             Correctlight3.SetActive(false);
+            gameCount1 = 0;
         }
 
         blockCounterTotal = blockCounter1 + blockCounter2 + blockCounter3;
+
+        game.number = gameCount1 + gameCount2 + gameCount3;
 
     }
 }

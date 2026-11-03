@@ -10,6 +10,7 @@ public class SBomb : MonoBehaviour
     [SerializeField] private TextMeshProUGUI wireText;
     [SerializeField] private GameObject losePanel;
     [SerializeField] private ParticleSystem smokeParticle;
+    public SGame game;
     private bool[] correctWire;
 
     private void Awake()
@@ -69,6 +70,7 @@ public class SBomb : MonoBehaviour
         if (correctWire[indexWire])
         {
             wireText.text = "Correct Wire!";
+            game.number += 1;
         }
         else
         {

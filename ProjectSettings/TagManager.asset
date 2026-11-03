@@ -10,6 +10,7 @@ TagManager:
   - block3
   - Whiteboard
   - block
+  - Hand
   layers:
   - Default
   - TransparentFX
